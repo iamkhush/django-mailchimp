@@ -1,14 +1,13 @@
 from django.contrib import admin
-from mailchimp.models import Campaign
-from mailchimp.settings import VIEWS_OVERVIEW
-
+from models import Campaign
+from views import overview
 
 class MailchimpAdmin(admin.ModelAdmin):
     def get_urls(self):
         from django.conf.urls import patterns, url
         urlpatterns = patterns('',
             url(r'^$',
-                VIEWS_OVERVIEW,
+                overview,
                 name='mailchimp_campaign_changelist',
                 kwargs={'page':'1'}),
         )
